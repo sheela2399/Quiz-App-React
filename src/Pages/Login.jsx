@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import login from "../assets/login.png"
 import google from "../assets/google.png"
+// import { Link } from "react-router-dom";
 
-const Login = () => {
+const Login = ({handlePassword, showPassword}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
     const [errorMessages, setErrorMessages] = useState({
         email: "",
         password: "",
@@ -34,10 +34,6 @@ const Login = () => {
         if (isValid) {
             console.log("Login Successful", { email, password });
         }
-    };
-
-    const handlePasswordToggle = () => {
-        setShowPassword((prev) => !prev);
     };
 
     return (
@@ -94,7 +90,7 @@ const Login = () => {
                                 />
                                 <i
                                     className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`}
-                                    onClick={handlePasswordToggle}
+                                    onClick={handlePassword}
                                     id="Show-password"
                                 ></i>
                             </span>
@@ -122,7 +118,7 @@ const Login = () => {
                         <p className="link-account grey-text dis-row-center">
                             Don't have an account?{" "}
                             <a className="text-blue" href="signup.html">
-                                Sign up?
+                                Sign up
                             </a>
                         </p>
                     </form>
