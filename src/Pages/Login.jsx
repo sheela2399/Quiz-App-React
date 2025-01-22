@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import login from "../assets/login.png"
 import google from "../assets/google.png"
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Login = ({handlePassword, showPassword}) => {
+const Login = ({ handlePassword, showPassword }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessages, setErrorMessages] = useState({
@@ -117,9 +117,9 @@ const Login = ({handlePassword, showPassword}) => {
 
                         <p className="link-account grey-text dis-row-center">
                             Don't have an account?{" "}
-                            <a className="text-blue" href="signup.html">
+                            <Link to="/signup" className="text-blue">
                                 Sign up
-                            </a>
+                            </Link>
                         </p>
                     </form>
                 </div>

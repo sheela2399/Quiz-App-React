@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import signUp from "../assets/signup.png";
 import google from "../assets/google.png";
+import { Link } from "react-router-dom";
 
 const SignUp = ({handlePassword, showPassword}) => {
 
@@ -48,14 +49,14 @@ const SignUp = ({handlePassword, showPassword}) => {
                         <label htmlFor="password" className="input-label">
                             Password<span className="text-red">*</span>
                         </label>
-                        <div className="forshowpass">
+                        <span className="forshowpass">
                             <input type="password" id="password" name="password" placeholder="Password" />
                             <i
                                 className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`}
                                 onClick={handlePassword}
                                 id="Show-password"
                             ></i>
-                        </div>
+                            </span>  
                         <span id="invalid-msg-password" className="invalid-msg"></span>
                     </div>
 
@@ -83,7 +84,9 @@ const SignUp = ({handlePassword, showPassword}) => {
                     </div>
 
                     <p className="link-account grey-text dis-row-center">
-                        Have an account? <a className="text-blue" href="">Log in?</a>
+                        Have an account? <Link to="/login" className="text-blue">
+                Login
+              </Link>
                     </p>
                 </form>
             </div>

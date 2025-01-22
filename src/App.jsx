@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './style.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import Quiz from './Pages/Quiz';
@@ -16,11 +17,15 @@ function App() {
 
   return (
     <>
-      <Login handlePassword={handlePasswordToggle} showPassword={showPassword}></Login>
-      <SignUp handlePassword={handlePasswordToggle} showPassword={showPassword}></SignUp>
-      <Quiz></Quiz>
-      <QuestionDisplay />
-      <LeaderBoard />
+      <Routes>
+        <Route path="/" element={<Login handlePassword={handlePasswordToggle} showPassword={showPassword} />} />
+        <Route path="/signup" element={<SignUp handlePassword={handlePasswordToggle} showPassword={showPassword}/>} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/questions" element={<QuestionDisplay />} />
+        <Route path="/leaderboard" element={<LeaderBoard />} />
+        {/* Redirect example */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </>
   );
 }
