@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import './style.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Login from './Pages/Login';
-import SignUp from './Pages/SignUp';
-import Quiz from './Pages/Quiz';
-import QuestionDisplay from './Pages/QuestionDisplay';
-import LeaderBoard from './Pages/LeaderBoard';
+import Login from './Container/Login';
+import SignUp from './Container/SignUp';
+import Quiz from './Container/Dashboard';
+import QuestionDisplay from './Container/QuestionDisplay';
+import LeaderBoard from './Container/LeaderBoard';
+import { createContext } from 'react';
+import Component1 from './Component1';
+import Component2 from './Component2';
 
 function App() {
   const [showPassword, setShowPassword] = useState(false);

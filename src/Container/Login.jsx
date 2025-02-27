@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import login from "../assets/login.png"
-import google from "../assets/google.png"
+import login from "../assets/login.png";
+import google from "../assets/google.png";
 import { Link } from "react-router-dom";
 
 const Login = ({ handlePassword, showPassword }) => {

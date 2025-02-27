@@ -2,8 +2,7 @@ import React,{useState} from "react";
 import Header from "../Components/Header";
 import Frame from "../assets/Frame.png";
 
-const Quiz = () =>{
-
+const Dashboard = () =>{
     const startQuiz = () =>{
         
     }
@@ -44,4 +43,4 @@ return(
 )
 }
 
-export default Quiz;
+export default Dashboard;
