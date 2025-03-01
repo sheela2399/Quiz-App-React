@@ -7,9 +7,7 @@ import SignUp from './Container/SignUp';
 import Quiz from './Container/Dashboard';
 import QuestionDisplay from './Container/QuestionDisplay';
 import LeaderBoard from './Container/LeaderBoard';
-import { createContext } from 'react';
-import Component1 from './Component1';
-import Component2 from './Component2';
+
 
 function App() {
   const [showPassword, setShowPassword] = useState(false);
