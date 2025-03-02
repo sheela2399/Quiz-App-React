@@ -45,7 +45,7 @@ const SignUp = () => {
         if (!password || password.length < 8) {
           alert("Password is mandatory upto 8 length please enter");
           return;
-          
+
         } else if (!rePass.test(password)) {
           alert(
             "Password should contain one capital letter one number and special character"
@@ -112,6 +112,7 @@ const SignUp = () => {
     
                   <input
                     id="password"
+                    
                     value={password}
                     type={eyeToggle ? "text" : "password"}
                     placeholder="Password"

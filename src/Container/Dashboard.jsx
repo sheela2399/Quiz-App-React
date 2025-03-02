@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Header from "../Components/Header";
 import Frame from "../assets/Frame.png";
+import { Link } from 'react-router'
 
 const Dashboard = () => {
-  const startQuiz = () => {};
+  let userData  = JSON.parse(localStorage.getItem("userLoggedIn"))
 
   return (
     <>
@@ -35,15 +36,14 @@ const Dashboard = () => {
             </p>
           </div>
           <div className=" start-btn-div dis-row-center">
-            <a href="question.html">
+            <Link to="/QuestionDisplay">
               <button
                 className="btn btn-primary"
                 type="submit"
                 onSubmit={startQuiz}
               >
                 Start Quiz
-              </button>
-            </a>
+              </button></Link>
           </div>
         </div>
       </div>
