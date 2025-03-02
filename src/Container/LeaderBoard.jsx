@@ -1,87 +1,137 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import Header from "../Components/Header";
 import crown from "../assets/crown.png"
 import Vector from "../assets/Vector.png"
+// import vector from "../assets/Vector 15.png"
+import crown from "../assets/crown.png"
+import userImage from "../assets/user_image.jpg"
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUserTestRequest } from '../store/userTest/userTestAction'
 
 const LeaderBoard = () => {
-    return (
-        <>
-        <Header/>
-        <div class="rank-heading dis-col-center">
-        <h1 id="rankDisplay"></h1>
-        <h2 id="rankScore"></h2>
-         {/* <p class="grey-text">Supporting Text</p>  */}
-    </div>
-    <div class="rank-holders">
-        <div class="second dis-col-center">
-            <h2 class="rank-number">#2</h2>
-            <div class="profile-pic dis-col-center" id="profile-second">
-                 {/* <img alt="User 2">   */}
-                 <span id="top2Name" class="topernames"></span>
-            </div>
-            <div class="rank dis-col-even" id="second">
-                <div class="dis-col-center">
-                <h2 class="score">Score</h2>
-                <h4 id="top2Score" class="topScores"></h4>
-            </div>
-        </div>
-    </div>
-    <div class="first dis-col-center">
-        <h2 class="rank-number"></h2>
-        <img src={crown} alt="crown"/>
-        <div class="profile-pic dis-col-center" id="profile-first">
-             {/* <img alt="User 1">  */}
-            <span id="top1Name" class="topernames"></span>
-        </div>
-        <div class="rank dis-col-even" id="first">
-            <div class="dis-col-center">
-            <h2 class="score">Score</h2>
-            <h4 id="top1Score" class="topScores"></h4>
-        </div>
-    </div>
-    </div>
 
-    <div class="third dis-col-center">
-        <h2 class="rank-number">#3</h2>
-        <div class="profile-pic dis-col-center" id="profile-third">
-             {/* <img alt="User 3">  */}
-             <span id="top3Name" class="topernames"></span>
-        </div>
+  const userTests = useSelector((state) => state.userTests.userTests);
+  const dispatch = useDispatch()
 
-        <div class="rank dis-col-even" id="third">
-            <div class="dis-col-center">
-                <h2 class="score">Score</h2>
-                <h4 id="top3Score" class="topScores"></h4>
-            </div>
-        </div>
-    </div>
-    </div>
+  const [sortedUsers, setSortedUsers] = useState([]);
+  const [userIndex, setUserIndex] = useState(null)
+  const [currentUserMarks, setCurrentUserMarks] = useState(null)
 
-    <div class="rank-list">
-        <img src={Vector} alt=""/>
-        <div class="ranking font-heavy">
-            <div class="rank-item dis-row-between" id="currentscore">
-               <div class=" dis-row-even" id="ExtraRank">
-                   <p id="currentUserRank"></p> <span id="currentUserName" class="topernames"></span>
-               </div> 
-                <p id="currentUserScore" class="topScores"></p>
+  let userData = JSON.parse(localStorage.getItem("userLoggedIn"))
+  console.log(userData.email)
+
+  useEffect(() => {
+    dispatch(fetchUserTestRequest());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const sortedData = userTests.sort((a, b) => b.totalScore - a.totalScore);
+    setSortedUsers(sortedData);
+    console.log(sortedData)
+  }, [userTests]);
+
+  useEffect(() => {
+    if (userData && sortedUsers.length > 0) {
+      const index = sortedUsers.findIndex(
+        (user) => user.fullName === userData.fullName
+      ) + 1;
+      const user = sortedUsers.find((user) => user.email === userData.email);
+      console.log(user)
+      setUserIndex(index);
+      setCurrentUserMarks(user.totalScore);
+    }
+  }, [sortedUsers, userData]);
+
+  return (
+    <>
+      <Header/>
+
+      <section id="leaderboard-main">
+        <h1 id="user-rank-title">Wow You Rank {userIndex || 'N/A'}</h1>
+        <p id="supporting-text">Your Score: {currentUserMarks || 0}</p>
+      </section>
+
+      <section id="score-board">
+        {
+          sortedUsers?.slice(0, 1).map((user) => (
+            <div id="first-rank-container">
+              <div className="first-rank">
+                <div className="crown">
+                  <img src={crown} alt="" />
+                </div>
+                <div className="bg-color"></div>
+                <div className="actual-score">
+                  <h2>Score</h2>
+                  <p>{user.totalScore}</p>
+                </div>
+
+                <div className="circle">
+                  <p className="username">{user.fullName}</p>
+                </div>
+              </div>
             </div>
-            <div class="rank-item dis-row-between">
-                <p>#6 <span id="top6Name" class="topernames"></span></p>
-                <p id="top6Score" class="topScores"></p>
+          ))
+        }
+
+        {
+          sortedUsers?.slice(1, 2).map((user) => (
+            <div id="second-rank-container">
+              <div className="second-rank">
+                <div className="bg-color2"><p className="rank2">#2</p></div>
+                <div className="actual-score2">
+                  <h2>Score</h2>
+                  <p>{user.totalScore}</p>
+                </div>
+                <div className="circle">
+                  <p className="username">{user.fullName}</p>
+                </div>
+              </div>
             </div>
-            <div class="rank-item dis-row-between">
-                <p>#5 <span id="top5Name" class="topernames"></span> </p>
-                <p id="top5Score" class="topScores"></p>
+          ))
+        }
+
+        {
+          sortedUsers.slice(2, 3).map((user) => (
+            <div id="third-rank-container">
+              <div className="third-rank">
+                <div className="bg-color3"><p className="rank2">#3</p></div>
+                <div className="actual-score3">
+                  <h2>Score</h2>
+                  <p>{user.totalScore}</p>
+                </div>
+                <div className="circle">
+                   
+                  <p className="username">{user.fullName}</p>
+                </div>
+              </div>
             </div>
-            <div class="rank-item dis-row-between">
-                <p >#4 <span id="top4Name" class="topernames"></span></p>
-                <p id="top4Score" class="topScores"></p>
-            </div>
+          ))
+        }
+
+
+        <div className="radius-design">
+          <img src={vector} alt="" />
+          <div className="ranking-board">
+            {
+              sortedUsers.slice(3, 6).map((user, index) => (
+                <div className="ranking">
+                  <p className="user-name"><span>#{index + 4}</span> {user.fullName}</p>
+                  <p className="user-name">{user.totalScore}</p>
+                </div>
+              ))
+            }
+            
+          </div>
         </div>
-    </div>
+      </section>
+
+      <div id="logout-container">
+        <p id="my-name">Hii, sheela</p>
+        <p id="my-email">sheelamishra1999@gmail</p>
+        <button id="logout-button" onclick="logout()">Logout</button>
+      </div>
     </>
-    );
-};
+  )
+}
 
 export default LeaderBoard;
