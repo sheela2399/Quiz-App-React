@@ -23,7 +23,7 @@ function* addUserTests(action) {
   }
 }
 
-function* upadteUserTests(action) {
+function* upadteUserTests(action) { 
     try {
         const response = yield call(
             http.put,
@@ -45,7 +45,7 @@ function* watchaddUserTests() {
   yield takeLatest("ADD_USERTEST_REQUEST", addUserTests);
 }
 
-function* watchupdateUserTests() {
+function* watchupdateUserTests() { 
   yield takeLatest("UPDATE_USERTEST_REQUEST", upadteUserTests);
 }
 

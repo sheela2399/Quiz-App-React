@@ -3,7 +3,7 @@ import Header from "../Components/Header";
 import crown from "../assets/crown.png"
 import Vector from "../assets/Vector.png"
 import { useSelector, useDispatch } from "react-redux";
-import { fetchUserTestRequest } from '../store/userTest/userTestAction'
+import { fetchUserTestRequest } from '../store/UserTest/userTestAction'
 
 const LeaderBoard = () => {
 
