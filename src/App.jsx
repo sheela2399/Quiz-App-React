@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Login from './Container/Login';
 import SignUp from './Container/SignUp';
-import Quiz from './Container/Dashboard';
+import dashboard from './Container/Dashboard';
 import QuestionDisplay from './Container/QuestionDisplay';
 import LeaderBoard from './Container/LeaderBoard';
 import PublicRoutes from './routes/PublicRoutes'
