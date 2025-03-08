@@ -1,97 +1,149 @@
-import React, { useState } from "react";
-import signUp from "../assets/signup.png";
-import google from "../assets/google.png";
-import { Link } from "react-router-dom";
+import React from "react";
+import login from "../assets/login.png";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { addUserRequest } from "../store/user/userAction";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
+import google from "../assets/google.png"
+import { Link } from "react-router";
 
-const SignUp = ({handlePassword, showPassword}) => {
+const SignUp = () => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [checkBox, setCheckBox] = useState(false);
+  const [eyeToggle, setEyeToggle] = useState(false);
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const validateSignup = () => {
-        console.log("Login Successful");
-    };
+  const handleSignUpForm = (e) => {
+    e.preventDefault();
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    let passwordPattern =
+      /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+    const namePattern = /^[a-zA-Z\s]+$/;
+    if (!fullName || !email || !password) {
+      alert("All fields are mandatory please enter");
+      return;
+    }
+    if (!fullName || fullName.length < 4) {
+      alert("Fullname is mandatory and minimum four letter please enter");
+      return;
+    }
+    if (!namePattern.test(fullName)) {
+      alert("Full name should only contain letters and spaces.");
+      return;
+    }
 
-    return (
-        <div className="signup-container dis-row-even w-100">
-            <div className="left dis-col-center">
-                <img src={signUp} alt="thinking_img" />
-            </div>
+    if (!emailPattern.test(email)) {
+      alert("Enter a proper email");
+      return;
+    }
+    if (!password || password.length < 8) {
+      alert("Password is mandatory upto 8 length please enter");
+      return;
+    } else if (!passwordPattern.test(password)) {
+      alert(
+        "Password should contain one capital letter one number and special character"
+      );
+      return;
+    }
+   
+    if (!checkBox) {
+      alert("Accept the terms and conditions");
+      return;
+    } else {
+      alert("Successfully registered...");
+      dispatch(addUserRequest({ fullName, email, password }));
+      navigate("/");
+    }
+    console.log(fullName, email, password);
+  };
 
-            <div className="right dis-col-center">
-                <form
-                    action=""
-                    method=""
-                    onSubmit={validateSignup}
-                    className="login_form"
-                    name="signupForm"
-                    id="signupForm"
-                >
-                    <div className="first-row">
-                        <h2 className="heading">Signup</h2>
-                        <p className="text-medium grey-text">Sign Up to join</p>
-                    </div>
 
-                    <div className="first-row email">
-                        <label htmlFor="fullName" className="input-label">
-                            Full Name<span className="text-red">*</span>
-                        </label>
-                        <input type="text" id="fullName" name="fullName" placeholder="Full Name" />
-                        <span id="invalid-msg-fullname" className="invalid-msg"></span>
-                    </div>
-
-                    <div className="first-row email">
-                        <label htmlFor="email" className="input-label">
-                            Email ID<span className="text-red">*</span>
-                        </label>
-                        <input type="email" id="email" name="email" placeholder="xyz12@gmail.com" />
-                        <span id="invalid-msg-email" className="invalid-msg"></span>
-                    </div>
-
-                    <div className="first-row password">
-                        <label htmlFor="password" className="input-label">
-                            Password<span className="text-red">*</span>
-                        </label>
-                        <span className="forshowpass">
-                            <input type="password" id="password" name="password" placeholder="Password" />
-                            <i
-                                className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`}
-                                onClick={handlePassword}
-                                id="Show-password"
-                            ></i>
-                            </span>  
-                        <span id="invalid-msg-password" className="invalid-msg"></span>
-                    </div>
-
-                    <div className="terms">
-                        <span>
-                            <input type="checkbox" id="terms" />
-                            <label htmlFor="terms">
-                                I accept{" "}
-                                <a href="#" className="text-blue">Terms & Conditions</a>
-                            </label>
-                        </span>
-                    </div>
-
-                    <button className="btn btn-primary" id="submit-button" type="Submit">
-                        Signup
-                    </button>
-
-                    <div className="first-row">
-                        <span id="invalid-msg-submit" className="invalid-msg"></span>
-                    </div>
-
-                    <div className="link-google dis-row-center">
-                        <img src={google} alt="google-logo" />
-                        <a href="">Sign up with Google</a>
-                    </div>
-
-                    <p className="link-account grey-text dis-row-center">
-                        Have an account? <Link to="/login" className="text-blue">
-                Login
-              </Link>
-                    </p>
-                </form>
-            </div>
+  return (
+    <>
+      <section id="container">
+        <div className="logo">
+          <img src={login} alt="brainimg" />
         </div>
-    );
+        <div className="signup-container">
+          <h1>Signup</h1>
+          <p>Sign up to Join</p>
+
+          <form onSubmit={handleSignUpForm}>
+            <div className="email">
+              <label>
+                Full Name<span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                id="fullname"
+                type="text"
+                value={fullName}
+                placeholder="Full Name"
+                onChange={(e) => setFullName(e.target.value)}
+              />
+            </div>
+            <div className="email">
+              <label>
+                Email ID<span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                id="email"
+                value={email}
+                type="email"
+                placeholder="xyz14@gmail.com"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="password">
+              <label>
+                Password<span style={{ color: "red" }}>*</span>
+              </label>
+              {eyeToggle ? (
+                <FaEye className="icon" onClick={() => setEyeToggle(false)} />
+              ) : (
+                <FaEyeSlash className="icon" onClick={() => setEyeToggle(true)}/>
+              )}
+
+              <input
+                id="password"
+                value={password}
+                type={eyeToggle ? "text" : "password"}
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <button type="submit" className="button">
+              Sign Up
+            </button>
+          </form>
+
+          <div className="sign-up-with-google">
+            <img src={google} alt="google-icon"/>
+            <p>Sign up with Google</p>
+          </div>
+          <div className="terms-condition">
+            <input
+              id="checkbox"
+              type="checkbox"
+              onChange={() => setCheckBox(true)}
+            />
+            <p>
+              I accept <span>Terms & Conditions</span>
+            </p>
+          </div>
+          <div className="login-account">
+            <p>Don't have an account?</p>
+            <Link to="/">Login</Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 };
 
 export default SignUp;

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import userReducer from './user/userReducer';
-import questionReducer from './questions/questionReducer';
-import userTestReducer from './UserTest/usertestReducer';
+import userReducer from "./User/userReducer"
+import questionReducer from './Questions/questionReducer';
+import userTestReducer from './UserTest/userTestReducer';
 
 export default combineReducers({
     users: userReducer,
     questions: questionReducer,
-    userTests: userTestReducer
+    userTests : userTestReducer
 });

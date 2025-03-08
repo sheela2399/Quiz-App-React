@@ -50,7 +50,7 @@ function* watchupdateUserTests() {
 }
 
 // export
-export default function* userTestsSaga() {
+export default function* userTestSaga() {
   yield all([
     fork(watchfetchUserTests),
     fork(watchaddUserTests),

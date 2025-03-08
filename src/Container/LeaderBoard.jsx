@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import Header from "../Components/Header";
 import crown from "../assets/crown.png"
 import Vector from "../assets/Vector.png"
@@ -12,9 +12,10 @@ const LeaderBoard = () => {
 
     const [sortedUsers, setSortedUsers] = useState([]);
     const [userIndex, setUserIndex] = useState(null)
+
+    const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userLoggedIn")))
     const [currentUserMarks, setCurrentUserMarks] = useState(null)
 
-    let userData = JSON.parse(localStorage.getItem("userLoggedIn"))
     console.log(userData.email)
 
     useEffect(() => {

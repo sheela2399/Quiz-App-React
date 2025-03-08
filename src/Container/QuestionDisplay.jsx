@@ -5,7 +5,6 @@ import { fetchQuestionRequest } from "../store/questions/questionAction";
 import { addUserTestRequest, fetchUserTestRequest, updateUserTestRequest } from "../store/UserTest/userTestAction";
 import { useNavigate } from "react-router";
 
-
 const QuestionDisplay = () => {
     const [randomQuestions, setRandomQuestions] = useState([]);
     const [questionIndex, setQuestionIndex] = useState(0);

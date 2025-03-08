@@ -15,6 +15,8 @@ const userTestReducer = (state = initialState, action) => {
             return { ...state, userTests: state.userTests.map((user) => (user.id === action.payload.id ? action.payload : user)) }
 
         default:
-            break;
+            return state;
     }
 }
+
+export default userTestReducer;
