@@ -11,20 +11,15 @@
       "fullName": "Amit",
       "email": "amit1999@gmail.com",
       "password": "Sheela@123"
+    },
+    {
+      "id": "3200",
+      "fullName": "Sara T",
+      "email": "sara123@gmail.com",
+      "password": "Sara@123"
     }
   ],
   "questions": [
-    {
-      "question": "What does the typeof operator return when applied to an object?",
-      "answers": [
-        "Array",
-        "Object",
-        "Function",
-        "Undefined"
-      ],
-      "correct": 1,
-      "id": "161b"
-    },
     {
       "question": "What is the largest mammal in the world?",
       "answers": [
@@ -292,7 +287,7 @@
       "id": "e04c",
       "fullName": "sheela mishra",
       "email": "sheelamishra1999@gmail.com",
-      "totalScore": 2,
+      "totalScore": 6,
       "tests": [
         {
           "totalScore": 2,
@@ -425,6 +420,50 @@
             1
           ],
           "timeTaken": "0 : 8 "
+        },
+        {
+          "totalScore": 6,
+          "randomQuestions": [
+            {
+              "question": "Which function is used to parse a string to an integer in JavaScript?",
+              "answers": [
+                "parseInt()",
+                "parseFloat()",
+                "Number()",
+                "int()"
+              ],
+              "correct": 0,
+              "id": "8629"
+            },
+            {
+              "question": "What is the largest mammal in the world?",
+              "answers": [
+                "Elephant",
+                "Blue Whale",
+                "Giraffe",
+                "Shark"
+              ],
+              "correct": 1,
+              "id": "5667"
+            },
+            {
+              "question": "What is the primary purpose of React?",
+              "answers": [
+                "To manage the backend of an application",
+                "To build reusable UI components",
+                "To create REST APIs",
+                "To handle database operations"
+              ],
+              "correct": 1,
+              "id": "add4"
+            }
+          ],
+          "selectedOption": [
+            0,
+            1,
+            1
+          ],
+          "timeTaken": "0 : 16 "
         }
       ]
     },
@@ -477,6 +516,58 @@
             1
           ],
           "timeTaken": "0 : 8 "
+        }
+      ]
+    },
+    {
+      "id": "7913",
+      "fullName": "Sara T",
+      "email": "sara123@gmail.com",
+      "totalScore": 4,
+      "tests": [
+        {
+          "totalScore": 4,
+          "randomQuestions": [
+            {
+              "question": "How can you create a new branch in Git?",
+              "answers": [
+                "git create branch [branch-name]",
+                "git branch [branch-name]",
+                "git new branch [branch-name]",
+                "git checkout [branch-name]"
+              ],
+              "correct": 1,
+              "id": "1d5f"
+            },
+            {
+              "question": "Which utility class in Tailwind CSS applies padding to all sides of an element?",
+              "answers": [
+                "p-4",
+                "pt-4",
+                "ml-4",
+                "text-4xl"
+              ],
+              "correct": 0,
+              "id": "d898"
+            },
+            {
+              "question": "What does HTML stands for?",
+              "answers": [
+                "Hypertext machine language",
+                "Hyper tranfer markup language",
+                "Hypertext markup language",
+                "Hyperlink and text markup language"
+              ],
+              "correct": 2,
+              "id": "1221"
+            }
+          ],
+          "selectedOption": [
+            1,
+            1,
+            2
+          ],
+          "timeTaken": "0 : 25 "
         }
       ]
     }

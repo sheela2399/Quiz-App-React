@@ -1,18 +1,23 @@
 import React from 'react'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../Components/Sidebar'
 import './admin.css'
-import Header from '../Components/Header'
+import Header from '../components/Header'
 
 const AdminDashboard = () => {
+  // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  //   const toggleSidebar = () => {
+  //       setIsSidebarOpen((prev) => !prev);
+  //   };
   return (
       <>
       <Header/>
 
-      <div class="admin-main-ciontainer">
-        <Sidebar/>
+      <div class="admin-main-container">
+        <Sidebar />
 
-      <section class="main-content">
-        <div class="main-content-info">
+      <section className="main-content">
+        <div className="main-content-info">
           <h1>Welcome to  Admin Page</h1>
         </div>
       </section>

@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import { fetchUserTestRequest } from '../store/UserTest/userTestAction'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../Components/Sidebar'
+import Header from '../components/Header'
 
 const FullTestDetails = () => {
 
@@ -16,34 +17,16 @@ const FullTestDetails = () => {
         dispatch(fetchUserTestRequest())
     }, [dispatch])
 
-    
+
     const selectedUserTest = userTest[id]?.tests[testIndex];
     console.log(selectedUserTest)
 
     return (
         <>
-            <header id="admin-header">
-                <div id="tech-logo">
-                    <i class="hamburger fa-solid fa-bars" onclick="sidebarToggle()"></i>
-                    <img src="assets/techpaathshala.svg" alt="techpaathsala" />
-                </div>
-
-                <div class="right-side-info">
-                    <ul>
-                        <li>Welcome,</li>
-                        <li>Admin</li>
-                        <img
-                            id="popup"
-                            onclick="popUpLogout()"
-                            src="assets/user_image.jpg"
-                            alt="userimage"
-                        />
-                    </ul>
-                </div>
-            </header>
+           <Header/>
 
             <div class="admin-main-ciontainer">
-                <Sidebar/>
+                <Sidebar />
 
                 <section class="main-content">
                     <div class="test-attempt-details">
@@ -60,7 +43,7 @@ const FullTestDetails = () => {
                         <div class="container">
                             {console.log(userTest)}
                             {
-                                selectedUserTest?.randomQuestions?.map((question,index) => (
+                                selectedUserTest?.randomQuestions?.map((question, index) => (
                                     <div class="questions-container">
                                         <p class="question">{question.question}</p>
                                         <ul>
@@ -79,12 +62,6 @@ const FullTestDetails = () => {
                         </div>
                     </div>
                 </section>
-            </div>
-
-            <div id="logout-container">
-                <p id="my-name">Hii, Admin</p>
-                <p id="my-email">admin007@gmail.com</p>
-                <button id="logout-button" onclick="logout()">Logout</button>
             </div>
         </>
     )

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.css';
+import './index.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Login from './Container/Login';

@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserTestRequest } from '../store/UserTest/userTestAction'
 import { Link } from 'react-router'
 import Sidebar from '../Components/Sidebar'
-import Header from '../Components/Header'
-
+import Header from '../components/Header'
 
 const UsersInfo = () => {
 
@@ -17,32 +16,10 @@ const UsersInfo = () => {
 
     return (
         <>
-            {/* <header id="admin-header">
-
-                <div id="tech-logo">
-                    <i class="hamburger fa-solid fa-bars" onclick="sidebarToggle()"></i>
-                    <img src="assets/techpaathshala.svg" alt="techpaathsala" />
-                </div>
-
-                <div class="right-side-info">
-                    <ul>
-                        <li>Welcome,</li>
-                        <li>Admin</li>
-                        <img
-                            id="popup"
-                            onclick="popUpLogout()"
-                            src="assets/user_image.jpg"
-                            alt="userimage"
-                        />
-                    </ul>
-                </div>
-            </header> */}
-
-            <Header/>
+            <Header />
 
             <div class="admin-main-ciontainer">
-                <Sidebar/>
-
+                <Sidebar />
                 <section class="main-content">
                     <div class="users-information">
                         <table class="table-two" >
@@ -77,11 +54,6 @@ const UsersInfo = () => {
                 </section>
             </div>
 
-            <div id="logout-container">
-                <p id="my-name">Hii, Admin</p>
-                <p id="my-email">admin007@gmail.com</p>
-                <button id="logout-button" onclick="logout()">Logout</button>
-            </div>
         </>
     )
 }

@@ -23,9 +23,8 @@ const AddQuestionModel = ({setAddQuestionModel}) => {
       <>
        <div class="overlay" id="overlay"  onClick={()=>setAddQuestionModel(false)}></div> 
         <section id="add-new-question">
-        <h1>Add New Question</h1>
+        <h1>Add New Question</h1><span class="cross-icon" onClick={()=>setAddQuestionModel(false)}>X</span>
         <form action=""  onSubmit={handleFormSubmit} class="form">
-          <div class="cross-icon" onClick={()=>setAddQuestionModel(false)}><span>&#10006;</span></div>
         <div id="question">
           <h3>Question:</h3>
           {/* <textarea name="" id="question-input"></textarea> */}

@@ -19,23 +19,19 @@ const Header = () => {
 
     return (
         <>
-            <header id="header">
-                <div id="tech-logo">
-                    <GiHamburgerMenu style={{ marginRight: "30px", fontSize: "26px" }} />
-                    <a href="startquiz.html">
+            <header id="header" className="flex justify-between items-center p-4 bg-gray-800 text-white">
+                <div id="tech-logo" className="flex items-center">
+                    <GiHamburgerMenu style={{ marginRight: "30px", fontSize: "26px" }} className='hamburger' />    
                         <img
                             src={techpaathshala}
                             alt="techpaathsala"
                         />
-                    </a>
                 </div>
 
                 <div className="right-side-info">
                     <ul>
-                        <a href="startquiz.html">
-                            <li></li>
-                        </a>
-                        <li>Welcome,</li>
+                        <li>Welcome</li>
+                        {/* <li>Welcome, {userData?.isAdmin ? "Admin" : userData?.fullName}</li> */}
                         <li>{userData?.fullName}</li>
                         <img
                             id="popup"

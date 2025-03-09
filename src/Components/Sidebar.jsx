@@ -12,19 +12,19 @@ const Sidebar = () => {
                 <h2>Dashboard</h2>
                 <ul clas="menu">
                     <NavLink to="/admindashboard">
-                        <li>
+                        <li className="nav-item">
                             <FaHouseUser />
                             Home
                         </li>
                     </NavLink>
                     <NavLink to="/userinfo">
-                        <li>
+                        <li className="nav-item">
                             <FaUsers></FaUsers>
                             Users
                         </li>
                     </NavLink>
                     <NavLink to="/quizzes">
-                        <li>
+                        <li className="nav-item">
                             <FaRegCircleQuestion />
                             Quizzes
                         </li>
